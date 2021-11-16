@@ -2,7 +2,7 @@ package com.cruftbusters.java_starter;
 
 public class App {
   public String getGreeting() {
-    return "Hello World!";
+    return "What's up?";
   }
 
   public static void main(String[] args) {
