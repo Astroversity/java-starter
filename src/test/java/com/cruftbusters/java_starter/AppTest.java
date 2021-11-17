@@ -4,17 +4,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-  @Test void appHasAGreetingInEnglish() {
+  @Test
+  void appHasAGreetingInEnglish() {
     App greeter = new App("English");
     assertEquals("What's up, Dan?", greeter.getGreeting("Dan"));
     assertEquals("What's up, Smith?", greeter.getGreeting("Smith"));
 
   }
 
-  @Test void appHasAGreetingInSpanish() {
+  @Test
+  void appHasAGreetingInSpanish() {
     App greeter = new App("Spanish");
     assertEquals("Hola, Dan?", greeter.getGreeting("Dan"));
     assertEquals("Hola, Smith?", greeter.getGreeting("Smith"));
 
+  }
+
+  @Test
+  void appHasAGreetingInFrench() {
+    App greeter = new App("French");
+    assertEquals("Bon jour, Dan?", greeter.getGreeting("Dan"));
+    assertEquals("Bon jour, Smith?", greeter.getGreeting("Smith"));
   }
 }

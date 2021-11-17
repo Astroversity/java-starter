@@ -6,10 +6,13 @@ public class App {
   private String language;
   public App(String language){this.language=language;}
   public String getGreeting(String name) {
-    if (Objects.equals(language, "English")){
+    if (Objects.equals(language, "English")) {
       return String.format("What's up, %s?", name);
     }
-    return String.format("Hola, %s?", name);
+    if (Objects.equals(language, "Spanish")) {
+      return String.format("Hola, %s?", name);
+    }
+    return String.format("Bon jour, %s?", name);
   }
 
   public static void main(String[] args) {
