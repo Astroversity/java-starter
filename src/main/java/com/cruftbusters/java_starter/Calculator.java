@@ -8,10 +8,14 @@ public class Calculator {
         }
         return sum;
     }
-    public int max(int compNumbers, int compNumbersTwo){
-        if( compNumbersTwo > compNumbers) {
-            return compNumbersTwo;
+    public int max(int[] compArray){
+        int max = Integer.MIN_VALUE;
+        for (int number : compArray) {
+            if (number > max) {
+                max = number;
+            }
         }
-        return compNumbers;
+        System.out.println(max);
+        return max;
     }
 }

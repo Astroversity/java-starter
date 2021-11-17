@@ -12,7 +12,9 @@ class SumTest {
     }
     @Test void numbersMax() {
         Calculator calculator = new Calculator();
-        assertEquals(9, calculator.max(6, 9));
-        assertEquals(9, calculator.max(9, 6));
+        assertEquals(9, calculator.max(new int[]{6, 9}));
+        assertEquals(9, calculator.max(new int[]{9, 6}));
+        assertEquals(11, calculator.max(new int[]{9, 6, 11}));
+        assertEquals(-6, calculator.max(new int[]{-9, -6, -11}));
     }
 }
