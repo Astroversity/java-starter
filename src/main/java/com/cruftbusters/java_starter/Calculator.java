@@ -8,4 +8,10 @@ public class Calculator {
         }
         return sum;
     }
+    public int max(int compNumbers, int compNumbersTwo){
+        if( compNumbersTwo > compNumbers) {
+            return compNumbersTwo;
+        }
+        return compNumbers;
+    }
 }
