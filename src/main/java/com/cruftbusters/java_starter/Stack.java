@@ -11,10 +11,12 @@ public class Stack {
     public String peek(){
         return strings.get(strings.size() - 1);
     }
-    public String pop(){
-        if (strings.isEmpty()) {
+    public String pop() {
+        try {
+        return strings.remove(strings.size() - 1);
+    }
+        catch(IndexOutOfBoundsException exception){
             throw new RuntimeException("Ehh wrong");
         }
-        return strings.remove(strings.size() - 1);
     }
 }

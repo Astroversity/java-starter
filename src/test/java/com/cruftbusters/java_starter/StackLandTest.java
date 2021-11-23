@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class StackLandTest {
     @Test
     void Stack() {
-        Stack stack = new Stack(){{
+        new Stack(){{
             add("Apples");
             add("Oranges");
+        assertEquals("Oranges", peek());
         }};
-        assertEquals("Oranges", stack.peek());
     }
     @Test
     void Pop() {
