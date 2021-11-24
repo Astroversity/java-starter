@@ -48,4 +48,10 @@ class BracesTest{
             assertFalse(isValid("[}"));
         }};
     }
+    @Test
+    void ReadDifferingBraceTwo(){
+        new BraceChecker(){{
+            assertFalse(isValid("{{]"));
+        }};
+    }
 }
