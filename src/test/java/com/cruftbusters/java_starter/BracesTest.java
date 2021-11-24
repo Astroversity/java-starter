@@ -42,7 +42,10 @@ class BracesTest{
     @Test
     void ReadDifferingBrace(){
         new BraceChecker(){{
-            assertFalse(isValid("{]][][][}"));
+            assertFalse(isValid("{[][][][]][]}}"));
+            assertFalse(isValid("{}}}[}[[[{{}{]]]{"));
+            assertFalse(isValid("}]"));
+            assertFalse(isValid("[}"));
         }};
     }
 }

@@ -6,11 +6,17 @@ public class BraceChecker {
     public boolean isValid(String braces) {
         int count = 0;
         for (char brace : braces.toCharArray()) {
-            if (brace == '{'||brace == '[') {
+            if (brace == '{') {
                 count++;
             }
-            if (brace == '}'||brace == ']') {
+            if (brace == '}') {
                 count--;
+            }
+            if (brace == '[') {
+                count += 2;
+            }
+            if (brace == ']') {
+                count -= 2;
             }
             if (count < 0) {
                 return false;
