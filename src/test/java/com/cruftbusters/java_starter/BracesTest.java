@@ -46,6 +46,9 @@ class BracesTest{
             assertFalse(isValid("{}}}[}[[[{{}{]]]{"));
             assertFalse(isValid("}]"));
             assertFalse(isValid("[}"));
+            assertFalse(isValid("]}"));
+            assertFalse(isValid("}}"));
+            assertFalse(isValid("[[}"));
         }};
     }
     @Test

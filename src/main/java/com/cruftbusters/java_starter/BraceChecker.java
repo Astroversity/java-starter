@@ -5,18 +5,28 @@ import java.util.regex.Pattern;
 public class BraceChecker {
     public boolean isValid(String braces) {
         int count = 0;
+        // different opening combo
+        if (braces.contains("{") && (braces.contains("["))) {
+            return false;
+        }
+        // different closing combo
+        if (braces.contains("}") && (braces.contains("]"))) {
+            return false;
+        }
+        // different pair combo 1
+        if (braces.contains("{") && (braces.contains("]"))) {
+            return false;
+        }
+        // different pair combo 2
+        if (braces.contains("[") && (braces.contains("}"))) {
+            return false;
+        }
         for (char brace : braces.toCharArray()) {
-            if (brace == '{') {
+            if (brace == '{'|| brace == '[') {
                 count++;
             }
-            if (brace == '}') {
+            if (brace == '}' || brace == ']') {
                 count--;
-            }
-            if (brace == '[') {
-                count += 2;
-            }
-            if (brace == ']') {
-                count -= 2;
             }
             if (count < 0) {
                 return false;
