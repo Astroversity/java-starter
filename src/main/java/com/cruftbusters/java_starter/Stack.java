@@ -5,9 +5,7 @@ import java.util.List;
 
 public class Stack {
     private final List<String> strings = new ArrayList<>();
-    public void add(String string) {
-        strings.add(string);
-    }
+    public void add(String string) {strings.add(string);}
     public String peek(){
         return strings.get(strings.size() - 1);
     }
