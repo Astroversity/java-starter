@@ -15,7 +15,7 @@ public class LinkedList {
     String get(int i){
         if (i == 0) {
             return head.item;
-        };
+        }
         return head.next.item;
     }
     private static class Node {
