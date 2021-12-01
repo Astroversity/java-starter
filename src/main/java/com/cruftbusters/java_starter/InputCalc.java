@@ -8,8 +8,7 @@ public class InputCalc {
     int result(String userInput) {
         List<Integer> numbersToMath = new ArrayList<>();
         int result = 0;
-        boolean isException = false;
-        String[] userInputArray = userInput.split("[+\\-/*]", 10);
+        String[] userInputArray = userInput.split("[+\\-/*]");
         for (String splitString : userInputArray) {
             int number = Integer.parseInt(splitString.trim());
             numbersToMath.add(number);
@@ -31,13 +30,10 @@ public class InputCalc {
                 } else try {
                     result /= numbersToMath.get(i);
                 } catch (ArithmeticException e) {
-                    isException = true;
+                    throw new ArithmeticException("Can't be divided by 0");
                 }
             }
         }
-        if (isException) {
-            throw new ArithmeticException("Can't be divided by 0");
-        }
-        else return result;
+        return result;
     }
 }

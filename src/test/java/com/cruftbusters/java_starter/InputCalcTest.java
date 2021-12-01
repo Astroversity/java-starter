@@ -33,8 +33,9 @@ class InputCalcTest {
         new InputCalc() {{
             Assertions.assertEquals(4, result("8/2"));
             Assertions.assertEquals(2, result("8/4"));
-            ArithmeticException exception = Assertions.assertThrows(ArithmeticException.class, () -> {throw new ArithmeticException("Can't be divided by 0");
-            }, "Can't be divided by 0");
+            ArithmeticException exception = Assertions.assertThrows(
+                    ArithmeticException.class,
+                    () -> result("8/0"));
             Assertions.assertEquals("Can't be divided by 0", exception.getMessage());
         }};
     }
