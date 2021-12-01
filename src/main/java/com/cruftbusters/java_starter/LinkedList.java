@@ -6,14 +6,14 @@ public class LinkedList {
         if (head == null) {
             head = new Node();
             head.item = string;
+            return;
         }
-        else if (head.next == null){
-            head.next = new Node();
-            head.next.item = string;
-        }
-        else {
-            head.next.next = new Node();
-            head.next.next.item = string;
+        for (Node current = head;;current = current.next){
+            if (current.next == null) {
+                current.next = new Node();
+                current.next.item = string;
+                break;
+            }
         }
     }
     String get(int i){
