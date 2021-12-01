@@ -7,16 +7,21 @@ public class LinkedList {
             head = new Node();
             head.item = string;
         }
-        else {
+        else if (head.next == null){
             head.next = new Node();
             head.next.item = string;
         }
+        else {
+            head.next.next = new Node();
+            head.next.next.item = string;
+        }
     }
     String get(int i){
-        if (i == 0) {
-            return head.item;
+        Node current = head;
+        for (int j = 0; j < i; j++) {
+            current = current.next;
         }
-        return head.next.item;
+        return current.item;
     }
     private static class Node {
         String item;
