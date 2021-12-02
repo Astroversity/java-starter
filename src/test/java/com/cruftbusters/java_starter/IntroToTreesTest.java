@@ -30,7 +30,10 @@ class IntroToTreesTest {
             Assertions.assertEquals("Apples", get(0));
             Assertions.assertEquals("Oranges", get(1));
             Assertions.assertEquals("Potatoes", get(2));
-            get(3);
+            NullPointerException exception = Assertions.assertThrows(
+                    NullPointerException.class,
+                    () -> get(3));
+            Assertions.assertEquals("Value for node has not been provided", exception.getMessage());
         }};
     }
 }
