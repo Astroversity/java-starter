@@ -5,6 +5,11 @@ import java.util.List;
 
 public class InputCalc {
 
+    int result(BiNode biNode) {
+        int left = Integer.parseInt(biNode.left.token);
+        int right = Integer.parseInt(biNode.right.token);
+        return left + right;
+    }
     int result(String userInput) {
         List<Integer> numbersToMath = new ArrayList<>();
         int result = 0;

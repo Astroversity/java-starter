@@ -12,6 +12,24 @@ class InputCalcTest {
             Assertions.assertEquals(13, result("4+9"));
         }};
     }
+
+    @Test
+    void AdditionWithBiNode() {
+        new InputCalc() {{
+            Assertions.assertEquals(2, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            token = "1";
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            token = "1";
+                        }};
+                    }}
+            ));
+        }};
+    }
+
     @Test
     void Subtraction() {
         new InputCalc() {{
@@ -20,6 +38,7 @@ class InputCalcTest {
             Assertions.assertEquals(3, result("3-0"));
         }};
     }
+
     @Test
     void Multiply() {
         new InputCalc() {{
@@ -28,6 +47,7 @@ class InputCalcTest {
             Assertions.assertEquals(63, result("7*9"));
         }};
     }
+
     @Test
     void Divide() throws ArithmeticException {
         new InputCalc() {{
@@ -39,6 +59,7 @@ class InputCalcTest {
             Assertions.assertEquals("Can't be divided by 0", exception.getMessage());
         }};
     }
+
     @Test
     void InputWithSpaces() {
         new InputCalc() {{
@@ -46,6 +67,7 @@ class InputCalcTest {
             Assertions.assertEquals(7, result(" 4 + 3 "));
         }};
     }
+
     @Test
     void DoubleDigits() {
         new InputCalc() {{
@@ -54,6 +76,7 @@ class InputCalcTest {
             Assertions.assertEquals(4, result("48 / 12"));
         }};
     }
+
     @Test
     void TripleDigits() {
         new InputCalc() {{
