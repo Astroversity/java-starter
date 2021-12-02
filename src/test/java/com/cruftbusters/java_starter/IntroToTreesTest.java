@@ -22,7 +22,7 @@ class IntroToTreesTest {
         }};
     }
     @Test
-    void addAndGet3(){
+    void addAndGet3() {
         new LinkedList() {{
             add("Apples");
             add("Oranges");
@@ -30,7 +30,19 @@ class IntroToTreesTest {
             Assertions.assertEquals("Apples", get(0));
             Assertions.assertEquals("Oranges", get(1));
             Assertions.assertEquals("Potatoes", get(2));
+        }};
+    }
+    @Test
+    void outOfBounds(){
+        new LinkedList() {{
             NullPointerException exception = Assertions.assertThrows(
+                    NullPointerException.class,
+                    () -> get(0));
+            Assertions.assertEquals("Value for node has not been provided", exception.getMessage());
+            add("Apples");
+            add("Oranges");
+            add("Potatoes");
+            exception = Assertions.assertThrows(
                     NullPointerException.class,
                     () -> get(3));
             Assertions.assertEquals("Value for node has not been provided", exception.getMessage());

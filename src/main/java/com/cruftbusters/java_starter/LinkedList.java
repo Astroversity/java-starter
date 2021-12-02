@@ -24,12 +24,12 @@ public class LinkedList {
     }
 
     String get(int i) {
+        if (i >= size) {
+            throw new NullPointerException("Value for node has not been provided");
+        }
         Node current = head;
         for (int j = 0; j < i; j++) {
-            if (current.next == null) {
-                throw new NullPointerException("Value for node has not been provided");
-            }
-            else current = current.next;
+            current = current.next;
         }
         return current.item;
     }
