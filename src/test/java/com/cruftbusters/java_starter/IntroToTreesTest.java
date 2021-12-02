@@ -36,6 +36,18 @@ class IntroToTreesTest {
             Assertions.assertEquals("Value for node has not been provided", exception.getMessage());
         }};
     }
+    @Test
+    void getSize(){
+        new LinkedList() {{
+            Assertions.assertEquals(0, size());
+            add("Apples");
+            Assertions.assertEquals(1, size());
+            add("Oranges");
+            Assertions.assertEquals(2, size());
+            add("Potatoes");
+            Assertions.assertEquals(3, size());
+        }};
+    }
 }
 
 //remove elements. add method for size and return size of list.

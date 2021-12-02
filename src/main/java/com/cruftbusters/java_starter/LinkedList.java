@@ -4,7 +4,11 @@ public class LinkedList {
     Node head;
     int size = 0;
 
+    int size() {
+        return size;
+    }
     void add(String string) {
+        size = size + 1;
         if (head == null) {
             head = new Node();
             head.item = string;
@@ -14,7 +18,6 @@ public class LinkedList {
             if (current.next == null) {
                 current.next = new Node();
                 current.next.item = string;
-                size = size + 1;
                 break;
             }
         }
