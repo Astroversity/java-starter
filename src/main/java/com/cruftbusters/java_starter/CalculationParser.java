@@ -13,7 +13,7 @@ public class CalculationParser {
             if (root == null) {
                 root = new BiNode();
                 root.token = token;
-            } else if (Objects.equals(token, "+")||root.left == null) {
+            } else if (Objects.equals(token, "+") || root.left == null) {
                 BiNode newRoot = new BiNode();
                 newRoot.left = root;
                 newRoot.token = token;
@@ -23,15 +23,19 @@ public class CalculationParser {
                 newRight.token = token;
                 newRight.left = root.right;
                 root.right = newRight;
-            } else if (root.right == null ){
-                root.right = new BiNode();
-                root.right.token = token;
-            } else {
-                root.right.right = new BiNode();
-                root.right.right.token = token;
             }
+            else Append(root, token);
         }
         return root;
+    }
+
+    private void Append(BiNode root, String token) {
+        if (root.right == null) {
+            root.right = new BiNode();
+            root.right.token = token;
+        } else {
+            Append(root.right, token);
+        }
     }
 }
 
