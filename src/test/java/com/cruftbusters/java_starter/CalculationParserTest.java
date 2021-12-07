@@ -49,4 +49,29 @@ class CalculationParserTest {
             );
         }};
     }
+    @Test
+    void parseOnePlusOneTimesTwoVTwo() {
+        new CalculationParser() {{
+            BiNode biNode = parse(Arrays.asList("1", "*", "1", "+", "2"));
+            Assertions.assertEquals(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "*";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            token = "2";
+                        }};
+                    }},
+                    biNode
+            );
+        }};
+    }
+
 }

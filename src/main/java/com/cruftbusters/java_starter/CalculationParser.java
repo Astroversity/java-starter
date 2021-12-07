@@ -13,16 +13,16 @@ public class CalculationParser {
             if (root == null) {
                 root = new BiNode();
                 root.token = token;
+            } else if (Objects.equals(token, "+")||root.left == null) {
+                BiNode newRoot = new BiNode();
+                newRoot.left = root;
+                newRoot.token = token;
+                root = newRoot;
             } else if (Objects.equals(token, "*")) {
                 BiNode newRight = new BiNode();
                 newRight.token = token;
                 newRight.left = root.right;
                 root.right = newRight;
-            } else if (Objects.equals(token, "+")) {
-                BiNode newRoot = new BiNode();
-                newRoot.left = root;
-                newRoot.token = token;
-                root = newRoot;
             } else if (root.right == null ){
                 root.right = new BiNode();
                 root.right.token = token;
