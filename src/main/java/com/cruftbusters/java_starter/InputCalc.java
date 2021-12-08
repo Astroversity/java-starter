@@ -7,24 +7,21 @@ import java.util.Objects;
 public class InputCalc {
 
     int result(BiNode biNode) {
-        int left;
-        int right;
-        if (isOperator(biNode.left.token)) {
-            left = result(biNode.left);
+        if (isOperator(biNode.token)) {
+            int left = result(biNode.left);
+            int right = result(biNode.right);
+            if (Objects.equals(biNode.token, "*")) {
+                return left * right;
+            }
+            return left + right;
         }
-        else left = Integer.parseInt(biNode.left.token);
-        if (isOperator(biNode.right.token)) {
-            right = result(biNode.right);
-        }
-        else right = Integer.parseInt(biNode.right.token);
-        if (Objects.equals(biNode.token, "*")) {
-            return left * right;
-        }
-        return left + right;
+        return Integer.parseInt(biNode.token);
     }
+
     private boolean isOperator(String token) {
-        return Objects.equals(token, "*")||Objects.equals(token, "+");
+        return Objects.equals(token, "*") || Objects.equals(token, "+");
     }
+
     int result(String userInput) {
         List<Integer> numbersToMath = new ArrayList<>();
         int result = 0;
