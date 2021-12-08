@@ -2,7 +2,7 @@ package com.cruftbusters.java_starter;
 
 import java.util.Objects;
 
-public class InputCalc {
+public class TreeSolver {
 
     int result(BiNode biNode) {
         if (isOperator(biNode.token)) {

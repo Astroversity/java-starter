@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-class CalculationParserTest {
+class TokenToTreeTest {
     @Test
     void parseOnePlusOne() {
-        new CalculationParser() {{
+        new TokenToTree() {{
             BiNode biNode = parse(Arrays.asList("1", "+", "1"));
             Assertions.assertEquals(
                     new BiNode() {{
@@ -27,7 +27,7 @@ class CalculationParserTest {
 
     @Test
     void parseOnePlusOneTimesTwo() {
-        new CalculationParser() {{
+        new TokenToTree() {{
             BiNode biNode = parse(Arrays.asList("1", "+", "1", "*", "2"));
             Assertions.assertEquals(
                     new BiNode() {{
@@ -51,7 +51,7 @@ class CalculationParserTest {
     }
     @Test
     void parseOnePlusOneTimesTwoVTwo() {
-        new CalculationParser() {{
+        new TokenToTree() {{
             BiNode biNode = parse(Arrays.asList("1", "*", "1", "+", "2"));
             Assertions.assertEquals(
                     new BiNode() {{

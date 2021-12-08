@@ -3,10 +3,10 @@ package com.cruftbusters.java_starter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class InputCalcTest {
+class TreeSolverTest {
     @Test
     void AdditionWithBiNode() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(2, result(
                     new BiNode() {{
                         left = new BiNode() {{
@@ -23,7 +23,7 @@ class InputCalcTest {
 
     @Test
     void TimesWithBiNode() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(3, result(
                     new BiNode() {{
                         left = new BiNode() {{
@@ -40,7 +40,7 @@ class InputCalcTest {
 
     @Test
     void PlusAndTimesLeftSubTree() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(3, result(
                     new BiNode() {{
                         left = new BiNode() {{
@@ -63,7 +63,7 @@ class InputCalcTest {
 
     @Test
     void TwoSubTrees() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(3, result(
                     new BiNode() {{
                         left = new BiNode() {{
@@ -92,7 +92,7 @@ class InputCalcTest {
 
     @Test
     void PlusAndTimesRightSubTree() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(3, result(
                     new BiNode() {{
                         left = new BiNode() {{
@@ -115,7 +115,7 @@ class InputCalcTest {
 
     @Test
     void PlusAndPlusRightSubTree() {
-        new InputCalc() {{
+        new TreeSolver() {{
             Assertions.assertEquals(4, result(
                     new BiNode() {{
                         left = new BiNode() {{

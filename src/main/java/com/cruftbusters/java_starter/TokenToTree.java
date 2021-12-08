@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.util.List;
 import java.util.Objects;
 
-public class CalculationParser {
+public class TokenToTree {
     BiNode parse(List<String> tokens) {
         BiNode root = null;
         for (String token : tokens) {
