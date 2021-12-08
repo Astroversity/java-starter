@@ -29,6 +29,117 @@ class InputCalcTest {
             ));
         }};
     }
+    @Test
+    void TimesWithBiNode() {
+        new InputCalc() {{
+            Assertions.assertEquals(3, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            token = "3";
+                        }};
+                        token = "*";
+                        right = new BiNode() {{
+                            token = "1";
+                        }};
+                    }}
+            ));
+        }};
+    }
+
+    @Test
+    void PlusAndTimesLeftSubTree() {
+        new InputCalc() {{
+            Assertions.assertEquals(3, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "*";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            token = "2";
+                        }};
+                    }}
+            ));
+        }};
+    }
+    @Test
+    void TwoSubTrees() {
+        new InputCalc() {{
+            Assertions.assertEquals(3, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "*";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "+";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                    }}
+            ));
+        }};
+    }
+    @Test
+    void PlusAndTimesRightSubTree() {
+        new InputCalc() {{
+            Assertions.assertEquals(3, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            token = "2";
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "*";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                    }}
+            ));
+        }};
+    }
+    @Test
+    void PlusAndPlusRightSubTree() {
+        new InputCalc() {{
+            Assertions.assertEquals(4, result(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            token = "2";
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "+";
+                            right = new BiNode() {{
+                                token = "1";
+                            }};
+                        }};
+                    }}
+            ));
+        }};
+    }
 
     @Test
     void Subtraction() {

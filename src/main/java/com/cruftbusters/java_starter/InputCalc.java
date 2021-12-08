@@ -2,13 +2,28 @@ package com.cruftbusters.java_starter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class InputCalc {
 
     int result(BiNode biNode) {
-        int left = Integer.parseInt(biNode.left.token);
-        int right = Integer.parseInt(biNode.right.token);
+        int left;
+        int right;
+        if (isOperator(biNode.left.token)) {
+            left = result(biNode.left);
+        }
+        else left = Integer.parseInt(biNode.left.token);
+        if (isOperator(biNode.right.token)) {
+            right = result(biNode.right);
+        }
+        else right = Integer.parseInt(biNode.right.token);
+        if (Objects.equals(biNode.token, "*")) {
+            return left * right;
+        }
         return left + right;
+    }
+    private boolean isOperator(String token) {
+        return Objects.equals(token, "*")||Objects.equals(token, "+");
     }
     int result(String userInput) {
         List<Integer> numbersToMath = new ArrayList<>();
