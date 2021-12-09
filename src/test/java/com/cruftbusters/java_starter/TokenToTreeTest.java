@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 class TokenToTreeTest {
     @Test
@@ -69,6 +70,16 @@ class TokenToTreeTest {
                             token = "2";
                         }};
                     }},
+                    biNode
+            );
+        }};
+    }
+    @Test
+    void parseEmptyList() {
+        new TokenToTree() {{
+            BiNode biNode = parse(List.of());
+            Assertions.assertEquals(
+                    new BiNode(),
                     biNode
             );
         }};

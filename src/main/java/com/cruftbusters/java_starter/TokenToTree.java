@@ -1,17 +1,13 @@
 package com.cruftbusters.java_starter;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
 import java.util.List;
 import java.util.Objects;
 
 public class TokenToTree {
-    BiNode parse(List<String> tokens) {
-        BiNode root = null;
+    public BiNode parse(List<String> tokens) {
+        BiNode root = new BiNode();
         for (String token : tokens) {
-            if (root == null) {
-                root = new BiNode();
+            if (root.token == null) {
                 root.token = token;
             } else if (Objects.equals(token, "+") || root.left == null) {
                 BiNode newRoot = new BiNode();
@@ -37,12 +33,4 @@ public class TokenToTree {
             Append(root.right, token);
         }
     }
-}
-
-@EqualsAndHashCode
-@ToString
-class BiNode {
-    BiNode left;
-    String token;
-    BiNode right;
 }

@@ -135,4 +135,13 @@ class TreeSolverTest {
             ));
         }};
     }
+
+    @Test
+    void EmptyBiNode() {
+        new TreeSolver() {{
+            Assertions.assertEquals(42, result(
+                    new BiNode()
+            ));
+        }};
+    }
 }

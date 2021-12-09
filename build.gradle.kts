@@ -14,6 +14,7 @@ dependencies {
   annotationProcessor("org.projectlombok:lombok:1.18.22")
   testImplementation("io.mockk:mockk:1.12.1")
   testImplementation("org.jetbrains.kotlin:kotlin-test:1.6.0")
+  testImplementation("io.kotest:kotest-assertions-core-jvm:5.0.1")
 }
 
 application {

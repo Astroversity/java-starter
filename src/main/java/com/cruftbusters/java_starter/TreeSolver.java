@@ -13,6 +13,9 @@ public class TreeSolver {
             }
             return left + right;
         }
+        else if (biNode.token == null) {
+            return 42;
+        }
         return Integer.parseInt(biNode.token);
     }
 
