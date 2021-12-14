@@ -3,10 +3,10 @@ package com.cruftbusters.java_starter;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class GreeterTest {
   @Test
   void appHasAGreetingInEnglish() {
-    App greeter = new App("English");
+    Greeter greeter = new Greeter("English");
     assertEquals("What's up, Dan?", greeter.getGreeting("Dan"));
     assertEquals("What's up, Smith?", greeter.getGreeting("Smith"));
 
@@ -14,7 +14,7 @@ class AppTest {
 
   @Test
   void appHasAGreetingInSpanish() {
-    App greeter = new App("Spanish");
+    Greeter greeter = new Greeter("Spanish");
     assertEquals("Hola, Dan?", greeter.getGreeting("Dan"));
     assertEquals("Hola, Smith?", greeter.getGreeting("Smith"));
 
@@ -22,7 +22,7 @@ class AppTest {
 
   @Test
   void appHasAGreetingInFrench() {
-    App greeter = new App("French");
+    Greeter greeter = new Greeter("French");
     assertEquals("Bon jour, Dan?", greeter.getGreeting("Dan"));
     assertEquals("Bon jour, Smith?", greeter.getGreeting("Smith"));
   }

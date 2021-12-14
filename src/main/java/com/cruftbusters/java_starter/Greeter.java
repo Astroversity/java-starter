@@ -2,9 +2,8 @@ package com.cruftbusters.java_starter;
 
 import java.util.Objects;
 
-public class App {
-  private String language;
-  public App(String language){this.language=language;}
+public record Greeter(String language) {
+
   public String getGreeting(String name) {
     if (Objects.equals(language, "English")) {
       return String.format("What's up, %s?", name);
@@ -16,6 +15,6 @@ public class App {
   }
 
   public static void main(String[] args) {
-    System.out.println(new App("English").getGreeting("Dan"));
+    System.out.println(new Greeter("English").getGreeting("Dan"));
   }
 }
