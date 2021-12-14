@@ -11,14 +11,3 @@ class Solver(
         return treeSolver.result(tree)
     }
 }
-fun main (args:Array<String>) {
-    while (true) {
-        val result = Solver(
-            Tokenizer(),
-            TokenToTree(),
-            TreeSolver(),
-        )
-            .solve(readLine()!!)
-        println(result)
-    }
-}
