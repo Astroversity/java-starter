@@ -1,30 +1,24 @@
 package com.cruftbusters.java_starter
 
 import java.io.*
-import java.nio.charset.Charset
 
 fun main(args: Array<String>) {
-    while (true) {
-        val line = readLine() ?: continue
+    doTheWorkNow(System.`in`, System.out)
+}
+
+fun doTheWorkNow(inputstream: InputStream, outputstream: OutputStream) {
+    val equations = inputstream.reader().use {
+        it.readText().split('\n')
+    }
+    for (equation in equations) {
         val result = Solver(
             Tokenizer(),
             TokenToTree(),
             TreeSolver(),
-        )
-            .solve(line)
-        println(result)
+        ).solve(equation).toString()
+        outputstream.writer().use {
+            it.appendLine(result)
+        }
     }
-}
-
-fun doTheWorkNow(inputstream: InputStream, outputstream: OutputStream) {
-    val string = inputstream.bufferedReader().readText()
-    val result = Solver(
-        Tokenizer(),
-        TokenToTree(),
-        TreeSolver(),
-    )
-        .solve(string).toString()
-    outputstream.writer().use {
-        it.write(result)
-    }
+    outputstream.close()
 }
