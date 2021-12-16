@@ -6,19 +6,22 @@ fun main(args: Array<String>) {
     doTheWorkNow(System.`in`, System.out)
 }
 
+val solver = Solver(
+    Tokenizer(),
+    TokenToTree(),
+    TreeSolver(),
+)
+
 fun doTheWorkNow(inputstream: InputStream, outputstream: OutputStream) {
-    val equations = inputstream.reader().use {
-        it.readText().split('\n')
-    }
-    for (equation in equations) {
-        val result = Solver(
-            Tokenizer(),
-            TokenToTree(),
-            TreeSolver(),
-        ).solve(equation).toString()
-        outputstream.writer().use {
-            it.appendLine(result)
+    inputstream.bufferedReader().use { reader ->
+        outputstream.writer().use { writer ->
+            var equation = reader.readLine()
+            while (equation != null) {
+                val result = solver.solve(equation).toString()
+                writer.appendLine(result)
+                writer.flush()
+                equation = reader.readLine()
+            }
         }
     }
-    outputstream.close()
 }
