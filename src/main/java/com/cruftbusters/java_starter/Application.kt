@@ -17,8 +17,10 @@ fun doTheWorkNow(inputstream: InputStream, outputstream: OutputStream) {
         outputstream.writer().use { writer ->
             var equation = reader.readLine()
             while (equation != null) {
-                val result = solver.solve(equation).toString()
-                writer.appendLine(result)
+                writer.appendLine(
+                    if (equation == "") "Input must be an equation."
+                    else solver.solve(equation).toString()
+                )
                 writer.flush()
                 equation = reader.readLine()
             }

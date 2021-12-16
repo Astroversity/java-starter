@@ -41,4 +41,25 @@ class ApplicationTest : FunSpec({
             }
         }
     }
+    test("Empty Bitch") {
+        val inputSink = PipedOutputStream()
+        val inputStream = PipedInputStream(inputSink)
+        val outputSink = PipedOutputStream()
+        val outputStream = PipedInputStream(outputSink)
+        GlobalScope.launch { doTheWorkNow(inputStream, outputSink) }
+        inputSink.writer().use { writer ->
+            outputStream.bufferedReader().use { reader ->
+                writer.appendLine("1+1")
+                writer.flush()
+                reader.readLine() shouldBe "2"
+                writer.appendLine("")
+                writer.flush()
+                reader.readLine() shouldBe "Input must be an equation."
+                writer.appendLine("1+3")
+                writer.flush()
+                reader.readLine() shouldBe "4"
+
+            }
+        }
+    }
 })
