@@ -10,6 +10,7 @@ import java.io.PipedInputStream
 import java.io.PipedOutputStream
 import kotlin.time.Duration.Companion.seconds
 
+@Suppress("BlockingMethodInNonBlockingContext")
 class CommandLineAppTest : FunSpec({
     test("Add Some Numbers") {
         val inputStream = ByteArrayInputStream("1+1".toByteArray())
