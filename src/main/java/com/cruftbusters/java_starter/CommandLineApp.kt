@@ -2,8 +2,8 @@ package com.cruftbusters.java_starter
 
 import java.io.*
 
-fun main(args: Array<String>) {
-    doTheWorkNow(System.`in`, System.out)
+fun main() {
+    commandLineApplication(System.`in`, System.out)
 }
 
 val solver = Solver(
@@ -12,9 +12,9 @@ val solver = Solver(
     TreeSolver(),
 )
 
-fun doTheWorkNow(inputstream: InputStream, outputstream: OutputStream) {
-    inputstream.bufferedReader().use { reader ->
-        outputstream.writer().use { writer ->
+fun commandLineApplication(inputStream: InputStream, outputStream: OutputStream) {
+    inputStream.bufferedReader().use { reader ->
+        outputStream.writer().use { writer ->
             var equation = reader.readLine()
             while (equation != null) {
                 writer.appendLine(
