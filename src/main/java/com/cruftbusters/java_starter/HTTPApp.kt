@@ -7,14 +7,21 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
 fun main() {
-    startServer()
+    startServer(
+        Solver(
+            Tokenizer(),
+            TokenToTree(),
+            TreeSolver()
+        )
+    )
 }
 
-fun startServer() {
+fun startServer(solver: Solver) {
     embeddedServer(Netty, port = 8080) {
         routing {
-            get("/hello-world") {
-                call.respond("Hello World!")
+            get("/") {
+                val equation = call.request.queryParameters["equation"]
+                call.respond(solver.solve(equation!!).toString())
             }
         }
     }.start()
