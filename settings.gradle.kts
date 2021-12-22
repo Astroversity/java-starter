@@ -1,1 +1,1 @@
-rootProject.name = "java-starter"
+rootProject.name = "janulator"

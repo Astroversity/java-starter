@@ -26,7 +26,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.cruftbusters.java_starter.ApplicationKt")
+    mainClass.set("com.cruftbusters.java_starter.HTTPAppKt")
 }
 
 tasks.named<JavaExec>("run") {

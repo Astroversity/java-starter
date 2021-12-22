@@ -1,0 +1,8 @@
+cat <<EOF | ssh yagni -T
+  cd /home/arctair/janulator
+  git fetch
+  git reset origin/main --hard
+  ./gradlew build
+  systemctl daemon-reload --user
+  systemctl restart janulator --user
+EOF
