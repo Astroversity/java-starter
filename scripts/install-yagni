@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+cat <<EOF | ssh yagni -T
+  git clone https://github.com/cruftbusters/janulator janulator
+  cd janulator
+  ln -s $HOME/janulator/scripts/janulator.service $HOME/.config/systemd/user/
+  systemctl enable janulator --user
+EOF

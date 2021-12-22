@@ -1,0 +1,10 @@
+[Unit]
+Description=janulator
+
+[Service]
+ExecStart=/usr/bin/java -jar /home/arctair/janulator/build/libs/janulator-all.jar -port=8083
+Type=simple
+WorkingDirectory=/home/arctair/janulator
+
+[Install]
+WantedBy=default.target
