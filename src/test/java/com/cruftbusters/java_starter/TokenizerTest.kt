@@ -20,4 +20,8 @@ class TokenizerTest {
     fun `Takes spaces to Token`() {
         Tokenizer().stringToToken("2    - 1* 3/   4") shouldBe listOf("2", "-", "1", "*", "3", "/", "4")
     }
+    @Test
+    fun `Takes Parenthesis`() {
+        Tokenizer().stringToToken("(2(*3)") shouldBe listOf("(", "2", "(", "*", "3", ")")
+    }
 }

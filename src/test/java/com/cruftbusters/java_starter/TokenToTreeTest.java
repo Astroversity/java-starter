@@ -50,6 +50,7 @@ class TokenToTreeTest {
             );
         }};
     }
+
     @Test
     void parseOnePlusOneTimesTwoVTwo() {
         new TokenToTree() {{
@@ -74,6 +75,7 @@ class TokenToTreeTest {
             );
         }};
     }
+
     @Test
     void parseEmptyList() {
         new TokenToTree() {{
@@ -85,4 +87,36 @@ class TokenToTreeTest {
         }};
     }
 
+    @Test
+    void parseParenthesis() {
+        new TokenToTree() {{
+            BiNode biNode = parse(Arrays.asList("1", "*", "(", "2", "+", "3", ")", "+", "4"));
+            Assertions.assertEquals(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            left = new BiNode() {{
+                                token = "1";
+                            }};
+                            token = "*";
+                            right = new BiNode() {
+                                {
+                                    left = new BiNode() {{
+                                        token = "2";
+                                    }};
+                                    token = "+";
+                                    right = new BiNode() {{
+                                        token = "3";
+                                    }};
+                                }
+                            };
+                        }};
+                        token = "+";
+                        right = new BiNode() {{
+                            token = "4";
+                        }};
+                    }},
+                    biNode
+            );
+        }};
+    }
 }
