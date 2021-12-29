@@ -19,18 +19,20 @@ public class TokenToTree {
                 newRight.token = token;
                 newRight.left = root.right;
                 root.right = newRight;
+            } else {
+                BiNode newRight = new BiNode();
+                newRight.token = token;
+                Append(root, newRight);
             }
-            else Append(root, token);
         }
         return root;
     }
 
-    private void Append(BiNode root, String token) {
+    private void Append(BiNode root, BiNode newRight) {
         if (root.right == null) {
-            root.right = new BiNode();
-            root.right.token = token;
+            root.right = newRight;
         } else {
-            Append(root.right, token);
+            Append(root.right, newRight);
         }
     }
 }
