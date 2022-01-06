@@ -47,7 +47,7 @@ class BiNodeTest {
 
     @Test
     void toStringWithTreeDeeperThanOne() {
-        Assertions.assertEquals("\n  - \n 6 9\n8 ", new BiNode() {{
+        Assertions.assertEquals("\n  - \n 6 9\n8   ", new BiNode() {{
             left = new BiNode() {{
                 left = new BiNode() {{
                     token = "8";
@@ -62,8 +62,8 @@ class BiNodeTest {
     }
 
     @Test
-    void toStringWithTreeDeepOneRight() {
-        Assertions.assertEquals("\n  - \n6  9\n 8", new BiNode() {{
+    void toStringWithTreeDeepOneLeft() {
+        Assertions.assertEquals("\n  - \n6  9\n 8  ", new BiNode() {{
             left = new BiNode() {{
                 right = new BiNode() {{
                     token = "8";
@@ -79,7 +79,7 @@ class BiNodeTest {
 
     @Test
     void toStringRightLeft() {
-        Assertions.assertEquals("\n - \n9  6\n  8 ", new BiNode() {{
+        Assertions.assertEquals("\n -  \n9  6\n  8 ", new BiNode() {{
             left = new BiNode() {{
                 token = "9";
             }};
@@ -95,7 +95,7 @@ class BiNodeTest {
 
     @Test
     void toStringWithRightRight() {
-        Assertions.assertEquals("\n -  \n9 6\n   8", new BiNode() {{
+        Assertions.assertEquals("\n -  \n9 6 \n   8", new BiNode() {{
             left = new BiNode() {{
                 token = "9";
             }};
