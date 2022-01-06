@@ -22,22 +22,18 @@ class BiNode {
         String rightBox = toStringOrEmpty(node.right);
         int rightBoxWidth = rightBox.split("\n")[0].length();
         String rightPadding = new String(new char[rightBoxWidth]).replace("\0", " ");
-        String bottomBox = bottomBox(leftBox, rightBox);
-        if (leftBox.length() > 0 || rightBox.length() > 0) {
-            return String.format("%s%s%s\n%s", leftPadding, node.token, rightPadding, bottomBox);
-        } else return node.token;
-    }
-
-    private static String bottomBox(String leftBox, String rightBox) {
         String[] leftBoxLines = leftBox.split("\n");
         String[] rightBoxLines = rightBox.split("\n");
         List<String> bottomBoxLines = new ArrayList<>();
         for (int i = 0; i < Math.max(leftBoxLines.length, rightBoxLines.length); i++) {
             String leftBoxLine = getLineOrPadding(leftBoxLines, i);
             String rightBoxLine = getLineOrPadding(rightBoxLines, i);
-            bottomBoxLines.add(leftBoxLine + " " + rightBoxLine);
+            bottomBoxLines.add(leftBoxLine + padding(node.token.length()) + rightBoxLine);
         }
-        return String.join("\n", bottomBoxLines);
+        String bottomBox = String.join("\n", bottomBoxLines);
+        if (leftBox.length() > 0 || rightBox.length() > 0) {
+            return String.format("%s%s%s\n%s", leftPadding, node.token, rightPadding, bottomBox);
+        } else return node.token;
     }
 
     private static String padding(int n) {

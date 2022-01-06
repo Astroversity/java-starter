@@ -108,4 +108,19 @@ class BiNodeTest {
             }};
         }}.toString());
     }
+    @Test
+    void toStringWithDoubleDeeg() {
+        Assertions.assertEquals("\n  wasd          \n69    8008135   \n             420", new BiNode() {{
+            left = new BiNode() {{
+                token = "69";
+            }};
+            token = "wasd";
+            right = new BiNode() {{
+                right = new BiNode() {{
+                    token = "420";
+                }};
+                token = "8008135";
+            }};
+        }}.toString());
+    }
 }
