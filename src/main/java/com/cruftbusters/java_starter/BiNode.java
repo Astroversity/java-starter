@@ -12,7 +12,10 @@ class BiNode {
     BiNode right;
 
     public String toString() {
-        return "\n" + toString(this);
+        if (token != null) {
+            return "\n" + toString(this);
+        }
+        return "Empty BiNode";
     }
 
     public static String toString(BiNode node) {

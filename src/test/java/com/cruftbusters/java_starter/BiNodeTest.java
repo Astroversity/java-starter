@@ -123,4 +123,8 @@ class BiNodeTest {
             }};
         }}.toString());
     }
+    @Test
+    void emptyBiNode() {
+        Assertions.assertEquals("Empty BiNode", new BiNode().toString());
+    }
 }

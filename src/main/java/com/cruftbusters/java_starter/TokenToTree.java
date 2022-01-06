@@ -9,54 +9,37 @@ public class TokenToTree {
         List<BiNode> nodes = new ArrayList<>();
         nodes.add(new BiNode());
         for (String token : tokens) {
-            if (nodes.size()>1) {
-                if (nodes.get(1).token == null) {
-                    nodes.get(1).token = token;
-                } else if (Objects.equals(token, ")")) {
-                    Append(nodes.get(0), nodes.get(1));
-                    nodes.remove(1);
-                } else if (Objects.equals(token, "+") || nodes.get(1).left == null) {
-                    BiNode newRoot = new BiNode();
-                    newRoot.left = nodes.get(1);
-                    newRoot.token = token;
-                    nodes.set(1, newRoot);
-                } else if (Objects.equals(token, "*")) {
-                    BiNode newRight = new BiNode();
-                    newRight.token = token;
-                    newRight.left = nodes.get(1).right;
-                    nodes.get(1).right = newRight;
-                } else {
-                    BiNode newRight = new BiNode();
-                    newRight.token = token;
-                    Append(nodes.get(1), newRight);
-                }
+            BiNode lastNode = nodes.get(nodes.size() - 1);
+            if (Objects.equals(token, "(")) {
+                nodes.add(new BiNode());
+            } else if (lastNode.token == null) {
+                lastNode.token = token;
+            } else if (Objects.equals(token, ")")) {
+                Append(nodes.get(nodes.size() - 2), lastNode);
+                nodes.remove(nodes.size() - 1);
+            } else if (Objects.equals(token, "+") || lastNode.left == null) {
+                BiNode newRoot = new BiNode();
+                newRoot.left = lastNode;
+                newRoot.token = token;
+                nodes.set(nodes.size() - 1, newRoot);
+            } else if (Objects.equals(token, "*")) {
+                BiNode newRight = new BiNode();
+                newRight.token = token;
+                newRight.left = lastNode.right;
+                lastNode.right = newRight;
             } else {
-                if (nodes.get(0).token == null) {
-                    nodes.get(0).token = token;
-                } else if (Objects.equals(token, "(")) {
-                    nodes.add(new BiNode());
-                } else if (Objects.equals(token, "+") || nodes.get(0).left == null) {
-                    BiNode newRoot = new BiNode();
-                    newRoot.left = nodes.get(0);
-                    newRoot.token = token;
-                    nodes.set(0, newRoot);
-                } else if (Objects.equals(token, "*")) {
-                    BiNode newRight = new BiNode();
-                    newRight.token = token;
-                    newRight.left = nodes.get(0).right;
-                    nodes.get(0).right = newRight;
-                } else {
-                    BiNode newRight = new BiNode();
-                    newRight.token = token;
-                    Append(nodes.get(0), newRight);
-                }
+                BiNode newRight = new BiNode();
+                newRight.token = token;
+                Append(lastNode, newRight);
             }
         }
         return nodes.get(0);
     }
 
     private void Append(BiNode root, BiNode newRight) {
-        if (root.right == null) {
+        if (root.left == null) {
+            root.left = newRight;
+        } else if (root.right == null) {
             root.right = newRight;
         } else {
             Append(root.right, newRight);
