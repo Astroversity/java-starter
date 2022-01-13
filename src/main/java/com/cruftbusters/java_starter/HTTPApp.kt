@@ -15,17 +15,7 @@ fun Application.module() {
             Tokenizer(),
             TokenToTree(),
             TreeSolver()
-        )
+        ),
+        log
     )
-}
-
-fun Application.solverController(
-    solver: Solver
-) {
-    routing {
-        get("/") {
-            val equation = call.request.queryParameters["equation"]
-            call.respond(solver.solve(equation!!).toString())
-        }
-    }
 }

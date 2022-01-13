@@ -2,6 +2,7 @@ package com.cruftbusters.java_starter
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import io.ktor.application.*
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
@@ -13,11 +14,7 @@ import io.mockk.mockk
 
 class HTTPAppTest : FunSpec({
     embeddedServer(Netty, port = 8079) {
-        solverController(
-            mockk {
-                every { solve("1+1") } returns 2
-            },
-        )
+        module()
     }.start()
     test("Testing Hello World!") {
         val httpClient = HttpClient {
@@ -28,7 +25,7 @@ class HTTPAppTest : FunSpec({
             }
         }
         httpClient.get<String>("/") {
-            parameter("equation", "1+1")
-        } shouldBe "2"
+            parameter("equation", "1+(2+(3+4))")
+        } shouldBe "10"
     }
 })
