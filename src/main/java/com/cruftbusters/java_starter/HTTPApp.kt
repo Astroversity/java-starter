@@ -11,6 +11,7 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     solverController(
+        Validator(),
         Solver(
             Tokenizer(),
             TokenToTree(),
