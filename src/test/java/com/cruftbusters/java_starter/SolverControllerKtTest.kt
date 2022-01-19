@@ -18,7 +18,7 @@ import java.lang.RuntimeException
 
 class SolverControllerKtTest : FunSpec({
     val mockSolver = mockk<Solver>()
-    val mockLogger = mockk<Logger>()
+    val mockLogger = mockk<Logger>(relaxUnitFun = true)
     val mockValidator = mockk<Validator>(relaxed = true)
     embeddedServer(Netty, port = 8079) {
         solverController(

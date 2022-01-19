@@ -23,6 +23,7 @@ fun Application.solverController(
                 call.respond(solver.solve(equation).toString())
             } catch (exception: Exception) {
                 logger.error("There was an error while solving an equation", exception)
+                call.respond(HttpStatusCode.InternalServerError)
             }
 
         }
