@@ -1,5 +1,6 @@
 package com.cruftbusters.java_starter;
 
+import io.kotest.core.spec.style.AnnotationSpec;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -149,4 +150,23 @@ class TokenToTreeTest {
             );
         }};
     }
+    @Test
+    void parseOneNumberThanOpenParenthesis() {
+        new TokenToTree() {{
+            BiNode biNode = parse(Arrays.asList("1", "(", "2", ")"));
+            Assertions.assertEquals(
+                    new BiNode() {{
+                        left = new BiNode() {{
+                            token = "1";
+                        }};
+                        token = "*";
+                        right = new BiNode() {{
+                            token = "2";
+                        }};
+                    }},
+                    biNode
+            );
+        }};
+    }
+
 }
