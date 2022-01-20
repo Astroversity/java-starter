@@ -12,7 +12,7 @@ public class TokenTreeBuilder {
     public void push(String token) {
         BiNode lastNode = nodes.get(nodes.size() - 1);
         if (Objects.equals(token, "(")) {
-            if (isNumber(lastNode.token)) {
+            if (isNumber(rightMost(lastNode).token)) {
                 push("*");
             }
             nodes.add(new BiNode());
@@ -37,6 +37,12 @@ public class TokenTreeBuilder {
             newRight.token = token;
             Append(lastNode, newRight);
         }
+    }
+
+    private BiNode rightMost(BiNode lastNode) {
+         if (lastNode.right == null) {
+             return lastNode;
+         } else return rightMost(lastNode.right);
     }
 
     private boolean isNumber(String token) {
