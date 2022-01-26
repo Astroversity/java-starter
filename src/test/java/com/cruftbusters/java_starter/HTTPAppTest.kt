@@ -13,19 +13,13 @@ import io.mockk.every
 import io.mockk.mockk
 
 class HTTPAppTest : FunSpec({
-    embeddedServer(Netty, port = 8079) {
-        module()
-    }.start()
-    test("Testing Hello World!") {
-        val httpClient = HttpClient {
-            defaultRequest {
-                url.protocol = URLProtocol.HTTP
-                url.host = "localhost"
-                url.port = 8079
+    context("with embedded server") {
+        withEmbeddedServer({ module() }) { httpClient ->
+            test("http service should solve equation") {
+                httpClient.get<String>("/") {
+                    parameter("equation", "1+(2+(3+4))")
+                } shouldBe "10"
             }
         }
-        httpClient.get<String>("/") {
-            parameter("equation", "1+(2+(3+4))")
-        } shouldBe "10"
     }
 })
